@@ -17,33 +17,35 @@ function addToQueue() {
         regularQueue.push(name);
     }
 
-    document.getElementById('name').value = '';  // Clear the input
+    document.getElementById('name').value = '';  //to Clear the input
     updateQueueDisplay();
 }
 
 // Function to update the queue display
 function updateQueueDisplay() {
     const queueList = document.getElementById('queue-list');
-    queueList.innerHTML = '';  // Clear the current list
+    queueList.innerHTML = '';  // Cleared the current list
 
     // First show VIP queue
     vipQueue.forEach((name) => {
         const listItem = document.createElement('li');
         listItem.className = 'vip';
         listItem.textContent = `VIP - ${name}`;
-        queueList.appendChild(listItem);
-    });
+        queueList.appendChild(listItem); // append vip  elem to array 
+    }) ;
 
     // Then show Regular queue
     regularQueue.forEach((name) => {
         const listItem = document.createElement('li');
         listItem.className = 'regular';
         listItem.textContent = `Regular - ${name}`;
-        queueList.appendChild(listItem);
+        queueList.appendChild(listItem); // append regular elemints to array 
     });
 }
 
 // Function to  next customer
+//shift removes first  elememt in the array 
+ 
 function serveCustomer() {
     if (vipQueue.length > 0) {
         vipQueue.shift();  //  first VIP customer
